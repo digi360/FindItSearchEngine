@@ -26,15 +26,16 @@
                 console.log( "ready!" );
 
                 // Declare globals -->
-                var wallpapers = [  "http://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAOcbyyfgFRYKulI9T2xiql6S1K-V1jxjKs8Kg6uRYgc49kYnx",
-                                    "http://i.pinimg.com/originals/57/1a/56/571a563c8b106b82aefd8d3ab10e79b8.jpg",
-                                    "http://www.firsthdwallpapers.com/uploads/2013/08/dsfs.jpg",
-                                    "http://wallpapercave.com/wp/VzW0Ze9.jpg",
-                                    "http://images4.fanpop.com/image/photos/22500000/Neo-in-The-Matrix-Reloaded-the-matrix-22575477-560-300.gif",
-                                    "http://images4.fanpop.com/image/photos/22500000/Agent-Smith-in-The-Matrix-Revolutions-agent-smith-22575732-570-300.gif",
-                                    "http://wallscover.com/images/binary-wallpaper-11.jpg",
-                                    "http://i.giphy.com/media/zXmbOaTpbY6mA/giphy.webp",
-                                    "http://media1.giphy.com/media/zXmbOaTpbY6mA/giphy.gif"];
+                var wallpapers = [  "https://image.ibb.co/g3N2fH/49415_matrix_neo_flying.gif",
+                                    "https://image.ibb.co/mkEXfH/a4e1929007c3f46ca1ea19488475d65d.gif",
+                                    "https://image.ibb.co/fFv50H/agent_smith.jpg",
+                                    "https://image.ibb.co/gnAG7x/Agent_Smith_in_The_Matrix_Revolutions_agent_smith_22575732_570_300.gif",
+                                    "https://image.ibb.co/dshUSx/binary_wallpaper_11.gif",
+                                    "https://image.ibb.co/but3nx/dsfs.jpg",
+                                    "https://image.ibb.co/jCQYnx/gallery_1473269189_giphy_8.gif",
+                                    "https://image.ibb.co/btuq0H/Neo_Agent_Smith_in_The_Matrix_Revolutions_the_matrix_22575645_570_300.gif",
+                                    "https://image.ibb.co/b5rv0H/tunnel.jpg",
+                                    "https://image.ibb.co/h4jq0H/VzW0Ze9.jpg"];
 
                 // Declare named funtions and events-->
 
@@ -47,13 +48,14 @@
 
                     var loop=0;
 
-                    while (currSource == newSource)
+                    while (newSource == currSource)
                     {
                         console.log(">>> looping "+(++loop)+ " times")
                         index = Math.floor((Math.random() * wallpapers.length));
                         newSource = wallpapers[index];
                     }
-                    $("#target").attr("src", wallpapers[index]);
+                    $("#target").attr("src", newSource);
+                    console.log("New wallpaper src = "+newSource);
                 }
 
                 $( "#search-field" ).on( "keyup", function( event )
@@ -73,6 +75,10 @@
                         window.location.href = newLocation;
                         $("slogan").hide();
                     }
+                });
+
+                $( "#button2" ).click(function() {
+                    changeWallpaper();
                 });
 
                 $('.burger').on('click', function(){
@@ -133,6 +139,7 @@
                 .burger {
                   position: relative;
                   margin-top: 20px;
+                  margin-right: 20px;
                   display: inline-block;
                   width: 60px;
                   height: 35px;
@@ -243,7 +250,7 @@
     <body>
 
         <!-- Burgher menu -->
-        <div class="text-center">
+        <div class="text-right">
             <div class="burger">
                 <span class="line"></span>
                 <span class="line"></span>
@@ -262,19 +269,19 @@
         <div class="container">
             <!-- Background container -->
             <div class="bg-container">
-              <img id="target" src="">
+              <img id="target" src="" alt="Background Image" border="0">
             </div>
 
             <!-- Page body content -->
             <div class="form-group text-center">
 
                 <!-- <img src="./logo.png" class="img-fluid" alt="FindIT Logo"> -->
-                <a href="https://ibb.co/jgCt4c"><img src="https://image.ibb.co/e3QD4c/logo.png" class="img-fluid" alt="logo" border="0"></a>
+                <img src="https://image.ibb.co/e3QD4c/logo.png" class="img-fluid" alt="FindIT logo" border="0" />
                     <input type="text" class="form-control" id="search-field" placeholder="Search text goes here">
 
                     <div class="text-center">
                         <button id="button1" class="btn btn-primary">FindIT</button>
-                        <button id="button2" class="btn btn-primary">Change Wallpaper</button>
+                        <button id="button2" class="btn btn-primary">Change Background</button>
                         <p id="slogan">Whatever you're looking for, FindIT can help you find it.</p>
                     </div>
             </div>
